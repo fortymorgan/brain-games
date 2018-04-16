@@ -4,11 +4,11 @@
   "description": "This is Hexlet project \"Brain Games\"",
   "main": "index.js",
   "scripts": {
-    "test": "make lint",
+    "test": "make lint && exit 0",
     "babel-node": "babel-node",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
-    "eslint": "eslint"
+    "eslint": "eslint src/bin/brain-games.js src/index.js"
   },
   "files": [
     "dist"
