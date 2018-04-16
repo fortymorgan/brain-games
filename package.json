@@ -1,0 +1,23 @@
+{
+  "name": "brain-games",
+  "version": "1.0.0",
+  "description": "This is Hexlet project \"Brain Games\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fortymorgan/project-lvl1-s256.git"
+  },
+  "keywords": [
+    "brain",
+    "games"
+  ],
+  "author": "Dmitriy Zhmudikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fortymorgan/project-lvl1-s256/issues"
+  },
+  "homepage": "https://github.com/fortymorgan/project-lvl1-s256#readme"
+}
