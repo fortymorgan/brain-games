@@ -7,4 +7,11 @@ const askName = () => {
   return name;
 };
 
-export default askName;
+const game = (gameProcess, generateNumbers) => {
+  const playerName = askName();
+  console.log(`Let's play a game, ${playerName}!`);
+
+  gameProcess(generateNumbers(), playerName);
+};
+
+export default game;
