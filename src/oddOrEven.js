@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-export const generateNumbers = () => {
+export const generate = () => {
   const array = [];
   for (let i = 0; i < 3; i += 1) {
     array.push(Math.round(Math.random() * 50));
@@ -9,7 +9,7 @@ export const generateNumbers = () => {
   return array;
 };
 
-export const question = (number) => {
+const question = (number) => {
   console.log(`Question: ${number}`);
   const answer = readlineSync.question('Your answer: ');
 
@@ -22,4 +22,19 @@ export const question = (number) => {
   }
   console.log('Wrong answer!');
   return 0;
+};
+
+export const game = (numbers, playerName) => {
+  let totalCount = 0;
+  for (let i = 1; i <= 3; i += 1) {
+    totalCount += question(numbers[i - 1]);
+    if (totalCount !== i) {
+      console.log(`Let's try again, ${playerName}!`);
+      break;
+    }
+  }
+
+  if (totalCount === 3) {
+    console.log(`Congratulations, ${playerName}!`);
+  }
 };
