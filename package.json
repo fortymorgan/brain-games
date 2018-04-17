@@ -1,6 +1,6 @@
 {
   "name": "brain-games-s256",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "This is Hexlet project \"Brain Games\"",
   "main": "index.js",
   "scripts": {
