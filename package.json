@@ -4,7 +4,7 @@
   "description": "This is Hexlet project \"Brain Games\"",
   "main": "index.js",
   "scripts": {
-    "test": "make lint && exit 0",
+    "test": "make lint",
     "babel-node": "babel-node",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
