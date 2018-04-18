@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import gameProcess from '..';
 import { generatePairs } from '../generateNumbers';
 
@@ -12,28 +11,23 @@ const greatCommonDiv = (num1, num2) => {
     }
   }
 
-  return divisor;
+  return String(divisor);
 };
 
-const question = (number) => {
-  console.log(`Question: ${number[0]} and ${number[1]}`);
-  const answer = readlineSync.question('Your answer: ');
+const gameArray = [];
+const arrayOfNumbers = generatePairs(200);
 
-  const gcd = greatCommonDiv(number[0], number[1]);
+gameArray.push('Find the greatest common divisor of given numbers.');
 
-  if (+answer === gcd) {
-    console.log('Correct!');
-    return 1;
-  }
-  console.log('Wrong answer!');
-  return 0;
-};
+for (let i = 1; i <= 3; i += 1) {
+  gameArray.push({
+    question: `Question: ${arrayOfNumbers[i - 1][0]} and ${arrayOfNumbers[i - 1][1]}`,
+    answer: greatCommonDiv(arrayOfNumbers[i - 1][0], arrayOfNumbers[i - 1][1]),
+  });
+}
 
 const game = () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('Find the greatest common divisor of given numbers.');
-
-  gameProcess(question, generatePairs(200), '');
+  gameProcess(gameArray);
 };
 
 export default game;

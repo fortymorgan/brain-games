@@ -1,27 +1,28 @@
-import readlineSync from 'readline-sync';
 import gameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const question = (number) => {
-  console.log(`Question: ${number}`);
-  const answer = readlineSync.question('Your answer: ');
-
-  if (number % 2 === 0 && answer.toLowerCase() === 'yes') {
-    console.log('Correct!');
-    return 1;
-  } else if (number % 2 !== 0 && answer.toLowerCase() === 'no') {
-    console.log('Correct!');
-    return 1;
+const oddOrEven = (number) => {
+  if (number % 2 === 0) {
+    return 'yes';
   }
-  console.log('Wrong answer!');
-  return 0;
+
+  return 'no';
 };
 
-const game = () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('Answer "yes" if number even otherwise answer "no".');
+const gameArray = [];
+const arrayOfNumbers = generateSimple(50);
 
-  gameProcess(question, generateSimple(50), '');
+gameArray.push('Answer "yes" if number even otherwise answer "no".');
+
+for (let i = 1; i <= 3; i += 1) {
+  gameArray.push({
+    question: `Question: ${arrayOfNumbers[i - 1]}`,
+    answer: oddOrEven(arrayOfNumbers[i - 1]),
+  });
+}
+
+const game = () => {
+  gameProcess(gameArray);
 };
 
 export default game;

@@ -1,32 +1,25 @@
-import readlineSync from 'readline-sync';
 import gameProcess from '..';
 import { generatePairs } from '../generateNumbers';
 
-const question = (number, action) => {
+const formAction = (number, action) => {
   switch (action) {
     case 'add':
-      console.log(`Question: ${number[0]} + ${number[1]}`);
-      break;
+      return (`Question: ${number[0]} + ${number[1]}`);
     case 'sub':
-      console.log(`Question: ${number[0]} - ${number[1]}`);
-      break;
+      return (`Question: ${number[0]} - ${number[1]}`);
     default:
-      console.log(`Question: ${number[0]} * ${number[1]}`);
+      return (`Question: ${number[0]} * ${number[1]}`);
   }
-  const answer = readlineSync.question('Your answer: ');
+};
 
-  if (action === 'add' && +answer === number[0] + number[1]) {
-    console.log('Correct!');
-    return 1;
-  } else if (action === 'sub' && +answer === number[0] - number[1]) {
-    console.log('Correct!');
-    return 1;
-  } else if (action === 'mult' && +answer === number[0] * number[1]) {
-    console.log('Correct!');
-    return 1;
+const answerGenerate = (number, action) => {
+  if (action === 'add') {
+    return String(number[0] + number[1]);
+  } else if (action === 'sub') {
+    return String(number[0] - number[1]);
   }
-  console.log('Wrong answer!');
-  return 0;
+
+  return String(number[0] * number[1]);
 };
 
 const actionNumbersToList = (elem) => {
@@ -49,11 +42,21 @@ const actionList = () => {
   return actionsArray.map(actionNumbersToList);
 };
 
-const game = () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('What is the result of the expression?');
+const gameArray = [];
+const arrayOfNumbers = generatePairs(25);
+const listOfActions = actionList();
 
-  gameProcess(question, generatePairs(25), actionList());
+gameArray.push('What is the result of the expression?');
+
+for (let i = 1; i <= 3; i += 1) {
+  gameArray.push({
+    question: formAction(arrayOfNumbers[i - 1], listOfActions[i - 1]),
+    answer: answerGenerate(arrayOfNumbers[i - 1], listOfActions[i - 1]),
+  });
+}
+
+const game = () => {
+  gameProcess(gameArray);
 };
 
 export default game;
