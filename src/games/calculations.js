@@ -40,25 +40,38 @@ const actionNumbersToList = (elem) => {
 
 const actionList = () => {
   const actionsArray = [];
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < N_ROUNDS; i += 1) {
     actionsArray.push(Math.floor(Math.random() * 3));
   }
 
   return actionsArray.map(actionNumbersToList);
 };
 
+const formArrayOfActions = (array1, array2) => {
+  const joinedArray = [];
+
+  for (let i = 0; i < array1.length; i += 1) {
+    joinedArray.push({
+      numbers: array1[i],
+      action: array2[i],
+    });
+  }
+
+  return joinedArray;
+};
+
 const gameArray = [];
 const arrayOfNumbers = generatePairs(25, N_ROUNDS);
-const listOfActions = actionList();
+const arrayOfActions = formArrayOfActions(arrayOfNumbers, actionList());
 
 gameArray.push('What is the result of the expression?');
 
-for (let i = 1; i <= 3; i += 1) {
+arrayOfActions.forEach((elem) => {
   gameArray.push({
-    question: formAction(arrayOfNumbers[i - 1], listOfActions[i - 1]),
-    answer: answerGenerate(arrayOfNumbers[i - 1], listOfActions[i - 1]),
+    question: formAction(elem.numbers, elem.action),
+    answer: answerGenerate(elem.numbers, elem.action),
   });
-}
+});
 
 const game = () => {
   gameProcess(gameArray);

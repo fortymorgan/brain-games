@@ -15,12 +15,12 @@ const arrayOfNumbers = generateSimple(50, N_ROUNDS);
 
 gameArray.push('Answer "yes" if number even otherwise answer "no".');
 
-for (let i = 1; i <= 3; i += 1) {
+arrayOfNumbers.forEach((elem) => {
   gameArray.push({
-    question: `Question: ${arrayOfNumbers[i - 1]}`,
-    answer: oddOrEven(arrayOfNumbers[i - 1]),
+    question: `Question: ${elem}`,
+    answer: oddOrEven(elem),
   });
-}
+});
 
 const game = () => {
   gameProcess(gameArray);

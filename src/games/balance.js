@@ -31,12 +31,12 @@ const arrayOfNumbers = generateSimple(10000, N_ROUNDS);
 
 gameArray.push('Balance the given number.');
 
-for (let i = 1; i <= 3; i += 1) {
+arrayOfNumbers.forEach((elem) => {
   gameArray.push({
-    question: `Question: ${arrayOfNumbers[i - 1]}`,
-    answer: balance(arrayOfNumbers[i - 1]),
+    question: `Question: ${elem}`,
+    answer: balance(elem),
   });
-}
+});
 
 const game = () => {
   gameProcess(gameArray);

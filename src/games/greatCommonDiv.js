@@ -20,12 +20,12 @@ const arrayOfNumbers = generatePairs(200, N_ROUNDS);
 
 gameArray.push('Find the greatest common divisor of given numbers.');
 
-for (let i = 1; i <= 3; i += 1) {
+arrayOfNumbers.forEach((elem) => {
   gameArray.push({
-    question: `Question: ${arrayOfNumbers[i - 1][0]} and ${arrayOfNumbers[i - 1][1]}`,
-    answer: greatCommonDiv(arrayOfNumbers[i - 1][0], arrayOfNumbers[i - 1][1]),
+    question: `Question: ${elem[0]} and ${elem[1]}`,
+    answer: greatCommonDiv(elem[0], elem[1]),
   });
-}
+});
 
 const game = () => {
   gameProcess(gameArray);
