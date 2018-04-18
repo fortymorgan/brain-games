@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync';
+import { N_ROUNDS } from './games';
 
-const gameProcess = (gameArray) => {
+const gameProcess = (gameObject) => {
   console.log('Welcome to the Brain Games!');
 
   const playerName = readlineSync.question('Tell me your name, please: ');
@@ -9,13 +10,13 @@ const gameProcess = (gameArray) => {
 
   let totalCount = 0;
 
-  console.log(gameArray[0]);
+  console.log(gameObject.instruction);
 
-  for (let i = 1; i < gameArray.length; i += 1) {
-    console.log(gameArray[i].question);
+  for (let i = 0; i < N_ROUNDS; i += 1) {
+    console.log(gameObject.askQuestion(gameObject.numbers[i]));
     const answer = readlineSync.question('Your answer: ');
 
-    if (answer === gameArray[i].answer) {
+    if (answer === gameObject.calcAnswer(gameObject.numbers[i])) {
       console.log('Correct!');
       totalCount += 1;
     } else {
@@ -24,7 +25,7 @@ const gameProcess = (gameArray) => {
     }
   }
 
-  if (totalCount === gameArray.length - 1) {
+  if (totalCount === N_ROUNDS) {
     console.log(`Congratulations, ${playerName}!`);
   } else {
     console.log(`Let's try again, ${playerName}!`);

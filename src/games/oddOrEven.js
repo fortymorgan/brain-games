@@ -10,20 +10,17 @@ const oddOrEven = (number) => {
   return 'no';
 };
 
-const gameArray = [];
-const arrayOfNumbers = generateSimple(50, N_ROUNDS);
+const formQuestion = number => `Question: ${number}`;
 
-gameArray.push('Answer "yes" if number even otherwise answer "no".');
-
-arrayOfNumbers.forEach((elem) => {
-  gameArray.push({
-    question: `Question: ${elem}`,
-    answer: oddOrEven(elem),
-  });
-});
+const gameObject = {
+  instruction: 'Answer "yes" if number even otherwise answer "no".',
+  numbers: generateSimple(50, N_ROUNDS),
+  askQuestion: formQuestion,
+  calcAnswer: oddOrEven,
+};
 
 const game = () => {
-  gameProcess(gameArray);
+  gameProcess(gameObject);
 };
 
 export default game;

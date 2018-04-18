@@ -2,27 +2,27 @@ import gameProcess from '..';
 import { generatePairs } from '../generateNumbers';
 import { N_ROUNDS } from '.';
 
-const formAction = (number, action) => {
-  switch (action) {
+const formAction = (number) => {
+  switch (number.action) {
     case 'add':
-      return (`Question: ${number[0]} + ${number[1]}`);
+      return (`Question: ${number.numbers[0]} + ${number.numbers[1]}`);
     case 'sub':
-      return (`Question: ${number[0]} - ${number[1]}`);
+      return (`Question: ${number.numbers[0]} - ${number.numbers[1]}`);
     case 'mult':
-      return (`Question: ${number[0]} * ${number[1]}`);
+      return (`Question: ${number.numbers[0]} * ${number.numbers[1]}`);
     default:
       throw new Error('Unknown operation');
   }
 };
 
-const answerGenerate = (number, action) => {
-  if (action === 'add') {
-    return String(number[0] + number[1]);
-  } else if (action === 'sub') {
-    return String(number[0] - number[1]);
+const answerGenerate = (number) => {
+  if (number.action === 'add') {
+    return String(number.numbers[0] + number.numbers[1]);
+  } else if (number.action === 'sub') {
+    return String(number.numbers[0] - number.numbers[1]);
   }
 
-  return String(number[0] * number[1]);
+  return String(number.numbers[0] * number.numbers[1]);
 };
 
 const actionNumbersToList = (elem) => {
@@ -38,9 +38,9 @@ const actionNumbersToList = (elem) => {
   }
 };
 
-const actionList = () => {
+const actionList = (size) => {
   const actionsArray = [];
-  for (let i = 0; i < N_ROUNDS; i += 1) {
+  for (let i = 0; i < size; i += 1) {
     actionsArray.push(Math.floor(Math.random() * 3));
   }
 
@@ -60,21 +60,17 @@ const formArrayOfActions = (array1, array2) => {
   return joinedArray;
 };
 
-const gameArray = [];
-const arrayOfNumbers = generatePairs(25, N_ROUNDS);
-const arrayOfActions = formArrayOfActions(arrayOfNumbers, actionList());
+const arrayOfActions = formArrayOfActions(generatePairs(25, N_ROUNDS), actionList(N_ROUNDS));
 
-gameArray.push('What is the result of the expression?');
-
-arrayOfActions.forEach((elem) => {
-  gameArray.push({
-    question: formAction(elem.numbers, elem.action),
-    answer: answerGenerate(elem.numbers, elem.action),
-  });
-});
+const gameObject = {
+  instruction: 'What is the result of the expression?',
+  numbers: arrayOfActions,
+  askQuestion: formAction,
+  calcAnswer: answerGenerate,
+};
 
 const game = () => {
-  gameProcess(gameArray);
+  gameProcess(gameObject);
 };
 
 export default game;

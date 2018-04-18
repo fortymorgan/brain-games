@@ -2,12 +2,12 @@ import gameProcess from '..';
 import { generatePairs } from '../generateNumbers';
 import { N_ROUNDS } from '.';
 
-const greatCommonDiv = (num1, num2) => {
-  const half = num1 > num2 ? Math.ceil(num1 / 2) : Math.ceil(num2 / 2);
+const greatCommonDiv = (number) => {
+  const limit = number[0] > number[1] ? number[0] : number[1];
   let divisor = 0;
 
-  for (let i = 1; i <= half; i += 1) {
-    if (num1 % i === 0 && num2 % i === 0) {
+  for (let i = 1; i <= limit; i += 1) {
+    if (number[0] % i === 0 && number[1] % i === 0) {
       divisor = i;
     }
   }
@@ -15,20 +15,17 @@ const greatCommonDiv = (num1, num2) => {
   return String(divisor);
 };
 
-const gameArray = [];
-const arrayOfNumbers = generatePairs(200, N_ROUNDS);
+const formQuestion = number => `Question: ${number[0]} and ${number[1]}`;
 
-gameArray.push('Find the greatest common divisor of given numbers.');
-
-arrayOfNumbers.forEach((elem) => {
-  gameArray.push({
-    question: `Question: ${elem[0]} and ${elem[1]}`,
-    answer: greatCommonDiv(elem[0], elem[1]),
-  });
-});
+const gameObject = {
+  instruction: 'Find the greatest common divisor of given numbers.',
+  numbers: generatePairs(200, N_ROUNDS),
+  askQuestion: formQuestion,
+  calcAnswer: greatCommonDiv,
+};
 
 const game = () => {
-  gameProcess(gameArray);
+  gameProcess(gameObject);
 };
 
 export default game;

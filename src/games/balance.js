@@ -26,20 +26,17 @@ const balance = (number) => {
   return balanced;
 };
 
-const gameArray = [];
-const arrayOfNumbers = generateSimple(10000, N_ROUNDS);
+const formQuestion = number => `Question: ${number}`;
 
-gameArray.push('Balance the given number.');
-
-arrayOfNumbers.forEach((elem) => {
-  gameArray.push({
-    question: `Question: ${elem}`,
-    answer: balance(elem),
-  });
-});
+const gameObject = {
+  instruction: 'Balance the given number.',
+  numbers: generateSimple(10000, N_ROUNDS),
+  askQuestion: formQuestion,
+  calcAnswer: balance,
+};
 
 const game = () => {
-  gameProcess(gameArray);
+  gameProcess(gameObject);
 };
 
 export default game;
