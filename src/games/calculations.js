@@ -1,4 +1,5 @@
 import gameProcess from '..';
+import { generatePair } from '../generateNumbers';
 
 const formAction = (number) => {
   switch (number.action) {
@@ -54,14 +55,7 @@ const formNumbersAndAction = (array, actionToDo) => {
   return object;
 };
 
-const generateNumber = () => {
-  const array = [];
-  for (let j = 0; j < 2; j += 1) {
-    array.push(Math.round((Math.random() * 25) + 1));
-  }
-
-  return array;
-};
+const generateNumber = () => generatePair(25);
 
 const numbersAndAction = () => formNumbersAndAction(generateNumber(), actionType());
 

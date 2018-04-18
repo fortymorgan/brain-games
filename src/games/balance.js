@@ -1,4 +1,5 @@
 import gameProcess from '..';
+import { generateSimple } from '../generateNumbers';
 
 const sumOfDigits = (number) => {
   let total = 0;
@@ -24,7 +25,7 @@ const balance = (number) => {
   return balanced;
 };
 
-const generateNumber = () => Math.round((Math.random() * 10000) + 1);
+const generateNumber = () => generateSimple(10000);
 
 const formQuestion = number => `Question: ${number}`;
 
