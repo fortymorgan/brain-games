@@ -8,8 +8,10 @@ const formAction = (number, action) => {
       return (`Question: ${number[0]} + ${number[1]}`);
     case 'sub':
       return (`Question: ${number[0]} - ${number[1]}`);
-    default:
+    case 'mult':
       return (`Question: ${number[0]} * ${number[1]}`);
+    default:
+      throw new Error('Unknown operation');
   }
 };
 
@@ -29,8 +31,10 @@ const actionNumbersToList = (elem) => {
       return 'mult';
     case 1:
       return 'add';
-    default:
+    case 2:
       return 'sub';
+    default:
+      return 'unknown';
   }
 };
 
