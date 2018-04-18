@@ -1,6 +1,4 @@
 import gameProcess from '..';
-import { generateSimple } from '../generateNumbers';
-import { N_ROUNDS } from '.';
 
 const oddOrEven = (number) => {
   if (number % 2 === 0) {
@@ -12,9 +10,11 @@ const oddOrEven = (number) => {
 
 const formQuestion = number => `Question: ${number}`;
 
+const generateNumber = () => Math.round((Math.random() * 50) + 1);
+
 const gameObject = {
   instruction: 'Answer "yes" if number even otherwise answer "no".',
-  numbers: generateSimple(50, N_ROUNDS),
+  number: generateNumber,
   askQuestion: formQuestion,
   calcAnswer: oddOrEven,
 };

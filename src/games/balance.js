@@ -1,6 +1,4 @@
 import gameProcess from '..';
-import { generateSimple } from '../generateNumbers';
-import { N_ROUNDS } from '.';
 
 const sumOfDigits = (number) => {
   let total = 0;
@@ -26,11 +24,13 @@ const balance = (number) => {
   return balanced;
 };
 
+const generateNumber = () => Math.round((Math.random() * 10000) + 1);
+
 const formQuestion = number => `Question: ${number}`;
 
 const gameObject = {
   instruction: 'Balance the given number.',
-  numbers: generateSimple(10000, N_ROUNDS),
+  number: generateNumber,
   askQuestion: formQuestion,
   calcAnswer: balance,
 };

@@ -1,6 +1,4 @@
 import gameProcess from '..';
-import { generatePairs } from '../generateNumbers';
-import { N_ROUNDS } from '.';
 
 const formAction = (number) => {
   switch (number.action) {
@@ -25,7 +23,7 @@ const answerGenerate = (number) => {
   return String(number.numbers[0] * number.numbers[1]);
 };
 
-const actionNumbersToList = (elem) => {
+const actionNumberToType = (elem) => {
   switch (elem) {
     case 0:
       return 'mult';
@@ -38,33 +36,35 @@ const actionNumbersToList = (elem) => {
   }
 };
 
-const actionList = (size) => {
-  const actionsArray = [];
-  for (let i = 0; i < size; i += 1) {
-    actionsArray.push(Math.floor(Math.random() * 3));
-  }
+const actionName = () => {
+  const actionNumber = Math.floor(Math.random() * 3);
 
-  return actionsArray.map(actionNumbersToList);
+  return actionNumberToType(actionNumber);
 };
 
-const formArrayOfActions = (array1, array2) => {
-  const joinedArray = [];
+const formObjectOfActions = (array, actionToDo) => {
+  const object = {
+    numbers: array,
+    action: actionToDo,
+  };
 
-  for (let i = 0; i < array1.length; i += 1) {
-    joinedArray.push({
-      numbers: array1[i],
-      action: array2[i],
-    });
-  }
-
-  return joinedArray;
+  return object;
 };
 
-const arrayOfActions = formArrayOfActions(generatePairs(25, N_ROUNDS), actionList(N_ROUNDS));
+const generateNumber = () => {
+  const array = [];
+  for (let j = 0; j < 2; j += 1) {
+    array.push(Math.round((Math.random() * 25) + 1));
+  }
+
+  return array;
+};
+
+const numbersAndAction = () => formObjectOfActions(generateNumber(), actionName());
 
 const gameObject = {
   instruction: 'What is the result of the expression?',
-  numbers: arrayOfActions,
+  number: numbersAndAction,
   askQuestion: formAction,
   calcAnswer: answerGenerate,
 };

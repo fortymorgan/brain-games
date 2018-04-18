@@ -1,6 +1,4 @@
 import gameProcess from '..';
-import { generatePairs } from '../generateNumbers';
-import { N_ROUNDS } from '.';
 
 const greatCommonDiv = (number) => {
   const limit = number[0] > number[1] ? number[0] : number[1];
@@ -15,11 +13,20 @@ const greatCommonDiv = (number) => {
   return String(divisor);
 };
 
+const generateNumber = () => {
+  const array = [];
+  for (let j = 0; j < 2; j += 1) {
+    array.push(Math.round((Math.random() * 200) + 1));
+  }
+
+  return array;
+};
+
 const formQuestion = number => `Question: ${number[0]} and ${number[1]}`;
 
 const gameObject = {
   instruction: 'Find the greatest common divisor of given numbers.',
-  numbers: generatePairs(200, N_ROUNDS),
+  number: generateNumber,
   askQuestion: formQuestion,
   calcAnswer: greatCommonDiv,
 };

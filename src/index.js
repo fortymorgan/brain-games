@@ -9,14 +9,17 @@ const gameProcess = (gameObject) => {
   console.log(`Let's play a game, ${playerName}!`);
 
   let totalCount = 0;
+  let number;
 
   console.log(gameObject.instruction);
 
   for (let i = 0; i < N_ROUNDS; i += 1) {
-    console.log(gameObject.askQuestion(gameObject.numbers[i]));
+    number = gameObject.number();
+
+    console.log(gameObject.askQuestion(number));
     const answer = readlineSync.question('Your answer: ');
 
-    if (answer === gameObject.calcAnswer(gameObject.numbers[i])) {
+    if (answer === gameObject.calcAnswer(number)) {
       console.log('Correct!');
       totalCount += 1;
     } else {
