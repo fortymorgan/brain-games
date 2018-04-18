@@ -11,7 +11,7 @@ const gameProcess = (gameArray) => {
 
   console.log(gameArray[0]);
 
-  for (let i = 1; i <= 3; i += 1) {
+  for (let i = 1; i < gameArray.length; i += 1) {
     console.log(gameArray[i].question);
     const answer = readlineSync.question('Your answer: ');
 
@@ -24,7 +24,7 @@ const gameProcess = (gameArray) => {
     }
   }
 
-  if (totalCount === 3) {
+  if (totalCount === gameArray.length - 1) {
     console.log(`Congratulations, ${playerName}!`);
   } else {
     console.log(`Let's try again, ${playerName}!`);
