@@ -1,5 +1,6 @@
 import gameProcess from '..';
 import { generatePairs } from '../generateNumbers';
+import { N_ROUNDS } from '.';
 
 const formAction = (number, action) => {
   switch (action) {
@@ -43,7 +44,7 @@ const actionList = () => {
 };
 
 const gameArray = [];
-const arrayOfNumbers = generatePairs(25);
+const arrayOfNumbers = generatePairs(25, N_ROUNDS);
 const listOfActions = actionList();
 
 gameArray.push('What is the result of the expression?');

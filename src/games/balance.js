@@ -1,5 +1,6 @@
 import gameProcess from '..';
 import { generateSimple } from '../generateNumbers';
+import { N_ROUNDS } from '.';
 
 const sumOfDigits = (number) => {
   let total = 0;
@@ -26,7 +27,7 @@ const balance = (number) => {
 };
 
 const gameArray = [];
-const arrayOfNumbers = generateSimple(10000);
+const arrayOfNumbers = generateSimple(10000, N_ROUNDS);
 
 gameArray.push('Balance the given number.');
 

@@ -1,5 +1,6 @@
 import gameProcess from '..';
 import { generatePairs } from '../generateNumbers';
+import { N_ROUNDS } from '.';
 
 const greatCommonDiv = (num1, num2) => {
   const half = num1 > num2 ? Math.ceil(num1 / 2) : Math.ceil(num2 / 2);
@@ -15,7 +16,7 @@ const greatCommonDiv = (num1, num2) => {
 };
 
 const gameArray = [];
-const arrayOfNumbers = generatePairs(200);
+const arrayOfNumbers = generatePairs(200, N_ROUNDS);
 
 gameArray.push('Find the greatest common divisor of given numbers.');
 

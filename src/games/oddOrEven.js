@@ -1,5 +1,6 @@
 import gameProcess from '..';
 import { generateSimple } from '../generateNumbers';
+import { N_ROUNDS } from '.';
 
 const oddOrEven = (number) => {
   if (number % 2 === 0) {
@@ -10,7 +11,7 @@ const oddOrEven = (number) => {
 };
 
 const gameArray = [];
-const arrayOfNumbers = generateSimple(50);
+const arrayOfNumbers = generateSimple(50, N_ROUNDS);
 
 gameArray.push('Answer "yes" if number even otherwise answer "no".');
 
