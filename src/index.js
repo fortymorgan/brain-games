@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { N_ROUNDS } from './games';
+import { N_ROUNDS } from './config';
 
 const gameProcess = (gameObject) => {
   console.log('Welcome to the Brain Games!');
