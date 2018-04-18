@@ -27,13 +27,18 @@ const balance = (number) => {
 
 const generateNumber = () => generateSimple(10000);
 
-const formQuestion = number => `Question: ${number}`;
+const formQuestion = () => {
+  const number = generateNumber();
+  console.log(`Question: ${number}`);
+
+  return () => balance(number);
+};
 
 const gameObject = {
   instruction: 'Balance the given number.',
-  generateValue: generateNumber,
+  // generateValue: generateNumber,
   askQuestion: formQuestion,
-  calculateAnswer: balance,
+  // calculateAnswer: balance,
 };
 
 const game = () => {

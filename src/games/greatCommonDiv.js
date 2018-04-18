@@ -16,13 +16,18 @@ const greatCommonDiv = (number) => {
 
 const generateNumbers = () => generatePair(200);
 
-const formQuestion = number => `Question: ${number[0]} and ${number[1]}`;
+const formQuestion = () => {
+  const numbers = generateNumbers();
+  console.log(`Question: ${numbers[0]} and ${numbers[1]}`);
+
+  return () => greatCommonDiv(numbers);
+};
 
 const gameObject = {
   instruction: 'Find the greatest common divisor of given numbers.',
-  generateValue: generateNumbers,
+  // generateValue: generateNumbers,
   askQuestion: formQuestion,
-  calculateAnswer: greatCommonDiv,
+  // calculateAnswer: greatCommonDiv,
 };
 
 const game = () => {

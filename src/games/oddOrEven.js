@@ -9,15 +9,20 @@ const oddOrEven = (number) => {
   return 'no';
 };
 
-const formQuestion = number => `Question: ${number}`;
-
 const generateNumber = () => generateSimple(50);
+
+const formQuestion = () => {
+  const number = generateNumber();
+  console.log(`Question: ${number}`);
+
+  return () => oddOrEven(number);
+};
 
 const gameObject = {
   instruction: 'Answer "yes" if number even otherwise answer "no".',
-  generateValue: generateNumber,
+  // generateValue: generateNumber,
   askQuestion: formQuestion,
-  calculateAnswer: oddOrEven,
+  // calculateAnswer: oddOrEven,
 };
 
 const game = () => {

@@ -7,17 +7,17 @@ const gameProcess = (gameObject) => {
   console.log(`Let's play a game, ${playerName}!`);
 
   let totalCount = 0;
-  let value;
+  // let value;
 
   console.log(gameObject.instruction);
 
   for (let i = 0; i < N_ROUNDS; i += 1) {
-    value = gameObject.generateValue();
+    const askedQuestion = gameObject.askQuestion();
 
-    console.log(gameObject.askQuestion(value));
+    // console.log(gameObject.askQuestion(value));
     const answer = readlineSync.question('Your answer: ');
 
-    if (answer === gameObject.calculateAnswer(value)) {
+    if (answer === askedQuestion()) {
       console.log('Correct!');
       totalCount += 1;
     } else {
