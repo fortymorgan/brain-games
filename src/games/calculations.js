@@ -39,13 +39,13 @@ const actionNumberToType = (elem) => {
   }
 };
 
-const actionName = () => {
+const actionType = () => {
   const actionNumber = Math.floor(Math.random() * 3);
 
   return actionNumberToType(actionNumber);
 };
 
-const formObjectOfActions = (array, actionToDo) => {
+const formNumbersAndAction = (array, actionToDo) => {
   const object = {
     numbers: array,
     action: actionToDo,
@@ -63,7 +63,7 @@ const generateNumber = () => {
   return array;
 };
 
-const numbersAndAction = () => formObjectOfActions(generateNumber(), actionName());
+const numbersAndAction = () => formNumbersAndAction(generateNumber(), actionType());
 
 const gameObject = {
   instruction: 'What is the result of the expression?',
