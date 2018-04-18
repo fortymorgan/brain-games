@@ -30,9 +30,9 @@ const formQuestion = number => `Question: ${number}`;
 
 const gameObject = {
   instruction: 'Balance the given number.',
-  number: generateNumber,
+  generateValue: generateNumber,
   askQuestion: formQuestion,
-  calcAnswer: balance,
+  calculateAnswer: balance,
 };
 
 const game = () => {

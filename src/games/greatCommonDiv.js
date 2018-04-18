@@ -26,9 +26,9 @@ const formQuestion = number => `Question: ${number[0]} and ${number[1]}`;
 
 const gameObject = {
   instruction: 'Find the greatest common divisor of given numbers.',
-  number: generateNumber,
+  generateValue: generateNumber,
   askQuestion: formQuestion,
-  calcAnswer: greatCommonDiv,
+  calculateAnswer: greatCommonDiv,
 };
 
 const game = () => {

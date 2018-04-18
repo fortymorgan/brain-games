@@ -13,7 +13,7 @@ const formAction = (number) => {
   }
 };
 
-const answerGenerate = (number) => {
+const generateAnswer = (number) => {
   switch (number.action) {
     case 'add':
       return String(number.numbers[0] + number.numbers[1]);
@@ -67,9 +67,9 @@ const numbersAndAction = () => formNumbersAndAction(generateNumber(), actionType
 
 const gameObject = {
   instruction: 'What is the result of the expression?',
-  number: numbersAndAction,
+  generateValue: numbersAndAction,
   askQuestion: formAction,
-  calcAnswer: answerGenerate,
+  calculateAnswer: generateAnswer,
 };
 
 const game = () => {

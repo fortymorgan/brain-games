@@ -14,9 +14,9 @@ const generateNumber = () => Math.round((Math.random() * 50) + 1);
 
 const gameObject = {
   instruction: 'Answer "yes" if number even otherwise answer "no".',
-  number: generateNumber,
+  generateValue: generateNumber,
   askQuestion: formQuestion,
-  calcAnswer: oddOrEven,
+  calculateAnswer: oddOrEven,
 };
 
 const game = () => {
