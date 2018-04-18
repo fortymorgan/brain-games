@@ -2,9 +2,7 @@ import readlineSync from 'readline-sync';
 import { N_ROUNDS } from './config';
 
 const gameProcess = (gameObject) => {
-  console.log('Welcome to the Brain Games!');
-
-  const playerName = readlineSync.question('Tell me your name, please: ');
+  const playerName = readlineSync.question('Welcome to the Brain Games!\nTell me your name, please: ');
 
   console.log(`Let's play a game, ${playerName}!`);
 
