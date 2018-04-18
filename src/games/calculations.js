@@ -14,13 +14,16 @@ const formAction = (number) => {
 };
 
 const answerGenerate = (number) => {
-  if (number.action === 'add') {
-    return String(number.numbers[0] + number.numbers[1]);
-  } else if (number.action === 'sub') {
-    return String(number.numbers[0] - number.numbers[1]);
+  switch (number.action) {
+    case 'add':
+      return String(number.numbers[0] + number.numbers[1]);
+    case 'sub':
+      return String(number.numbers[0] - number.numbers[1]);
+    case 'mult':
+      return String(number.numbers[0] * number.numbers[1]);
+    default:
+      throw new Error('Unknown operation');
   }
-
-  return String(number.numbers[0] * number.numbers[1]);
 };
 
 const actionNumberToType = (elem) => {
