@@ -1,19 +1,6 @@
 import readlineSync from 'readline-sync';
 import gameProcess from '..';
-
-const generate = () => {
-  const array = [];
-  let subarray = [];
-  for (let i = 0; i < 3; i += 1) {
-    subarray = [];
-    for (let j = 0; j < 2; j += 1) {
-      subarray.push(Math.round(Math.random() * 25));
-    }
-    array.push(subarray);
-  }
-
-  return array;
-};
+import { generatePairs } from '../generateNumbers';
 
 const question = (number, action) => {
   switch (action) {
@@ -66,7 +53,7 @@ const game = () => {
   console.log('Welcome to the Brain Games!');
   console.log('What is the result of the expression?');
 
-  gameProcess(question, generate(), actionList());
+  gameProcess(question, generatePairs(25), actionList());
 };
 
 export default game;

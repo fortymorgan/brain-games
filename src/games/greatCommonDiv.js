@@ -1,5 +1,6 @@
 import readlineSync from 'readline-sync';
 import gameProcess from '..';
+import { generatePairs } from '../generateNumbers';
 
 const greatCommonDiv = (num1, num2) => {
   const half = num1 > num2 ? Math.ceil(num1 / 2) : Math.ceil(num2 / 2);
@@ -12,20 +13,6 @@ const greatCommonDiv = (num1, num2) => {
   }
 
   return divisor;
-};
-
-const generate = () => {
-  const array = [];
-  let subarray = [];
-  for (let i = 0; i < 3; i += 1) {
-    subarray = [];
-    for (let j = 0; j < 2; j += 1) {
-      subarray.push(Math.ceil(Math.random() * 200));
-    }
-    array.push(subarray);
-  }
-
-  return array;
 };
 
 const question = (number) => {
@@ -46,7 +33,7 @@ const game = () => {
   console.log('Welcome to the Brain Games!');
   console.log('Find the greatest common divisor of given numbers.');
 
-  gameProcess(question, generate(), '');
+  gameProcess(question, generatePairs(200), '');
 };
 
 export default game;

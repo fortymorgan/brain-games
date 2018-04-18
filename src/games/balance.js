@@ -1,5 +1,6 @@
 import readlineSync from 'readline-sync';
 import gameProcess from '..';
+import { generateSimple } from '../generateNumbers';
 
 const sumOfDigits = (number) => {
   let total = 0;
@@ -25,15 +26,6 @@ const balance = (number) => {
   return +balanced;
 };
 
-const generate = () => {
-  const array = [];
-  for (let i = 0; i < 3; i += 1) {
-    array.push(Math.round(Math.random() * 10000));
-  }
-
-  return array;
-};
-
 const question = (number) => {
   console.log(`Question: ${number}`);
   const answer = readlineSync.question('Your answer: ');
@@ -52,7 +44,7 @@ const game = () => {
   console.log('Welcome to the Brain Games!');
   console.log('Balance the given number.');
 
-  gameProcess(question, generate(), '');
+  gameProcess(question, generateSimple(10000), '');
 };
 
 export default game;
