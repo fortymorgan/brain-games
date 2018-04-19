@@ -1,9 +1,9 @@
 import gameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const sumOfDigits = (number) => {
+const sumOfDigits = (value) => {
   let total = 0;
-  const numToString = String(number);
+  const numToString = String(value);
 
   for (let i = 0; i < numToString.length; i += 1) {
     total += +numToString[i];
@@ -12,9 +12,9 @@ const sumOfDigits = (number) => {
   return total;
 };
 
-const balance = (number) => {
-  let sum = sumOfDigits(number);
-  const numToString = String(number);
+const balance = (value) => {
+  let sum = sumOfDigits(value);
+  const numToString = String(value);
   let balanced = '';
 
   for (let i = numToString.length; i > 0; i -= 1) {
@@ -28,10 +28,10 @@ const balance = (number) => {
 const generateNumber = () => generateSimple(10000);
 
 const formQuestion = () => {
-  const number = generateNumber();
-  console.log(`Question: ${number}`);
+  const value = generateNumber();
+  console.log(`Question: ${value}`);
 
-  return () => balance(number);
+  return () => balance(value);
 };
 
 const gameObject = {

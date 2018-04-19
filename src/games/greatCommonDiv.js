@@ -1,12 +1,12 @@
 import gameProcess from '..';
 import { generatePair } from '../generateNumbers';
 
-const greatCommonDiv = (number) => {
-  const limit = number[0] > number[1] ? number[0] : number[1];
+const greatCommonDiv = (value) => {
+  const limit = value[0] > value[1] ? value[0] : value[1];
   let divisor = 0;
 
   for (let i = 1; i <= limit; i += 1) {
-    if (number[0] % i === 0 && number[1] % i === 0) {
+    if (value[0] % i === 0 && value[1] % i === 0) {
       divisor = i;
     }
   }
@@ -17,10 +17,10 @@ const greatCommonDiv = (number) => {
 const generateNumbers = () => generatePair(200);
 
 const formQuestion = () => {
-  const numbers = generateNumbers();
-  console.log(`Question: ${numbers[0]} and ${numbers[1]}`);
+  const value = generateNumbers();
+  console.log(`Question: ${value[0]} and ${value[1]}`);
 
-  return () => greatCommonDiv(numbers);
+  return () => greatCommonDiv(value);
 };
 
 const gameObject = {

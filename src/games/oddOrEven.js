@@ -1,8 +1,8 @@
 import gameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const oddOrEven = (number) => {
-  if (number % 2 === 0) {
+const oddOrEven = (value) => {
+  if (value % 2 === 0) {
     return 'yes';
   }
 
@@ -12,10 +12,10 @@ const oddOrEven = (number) => {
 const generateNumber = () => generateSimple(50);
 
 const formQuestion = () => {
-  const number = generateNumber();
-  console.log(`Question: ${number}`);
+  const value = generateNumber();
+  console.log(`Question: ${value}`);
 
-  return () => oddOrEven(number);
+  return () => oddOrEven(value);
 };
 
 const gameObject = {

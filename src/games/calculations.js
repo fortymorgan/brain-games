@@ -1,21 +1,21 @@
 import gameProcess from '..';
 import { generatePair } from '../generateNumbers';
 
-const generateAnswer = (number) => {
-  switch (number.action) {
+const generateAnswer = (value) => {
+  switch (value.action) {
     case '+':
-      return String(number.numbers[0] + number.numbers[1]);
+      return String(value.numbers[0] + value.numbers[1]);
     case '-':
-      return String(number.numbers[0] - number.numbers[1]);
+      return String(value.numbers[0] - value.numbers[1]);
     case '*':
-      return String(number.numbers[0] * number.numbers[1]);
+      return String(value.numbers[0] * value.numbers[1]);
     default:
       throw new Error('Unknown operation');
   }
 };
 
-const actionNumberToType = (elem) => {
-  switch (elem) {
+const actionNumberToType = (actionNumber) => {
+  switch (actionNumber) {
     case 0:
       return '*';
     case 1:
@@ -47,10 +47,10 @@ const generateNumber = () => generatePair(25);
 const numbersAndAction = () => formNumbersAndAction(generateNumber(), actionType());
 
 const formAction = () => {
-  const number = numbersAndAction();
-  console.log(`Question: ${number.numbers[0]} ${number.action} ${number.numbers[1]}`);
+  const value = numbersAndAction();
+  console.log(`Question: ${value.numbers[0]} ${value.action} ${value.numbers[1]}`);
 
-  return () => generateAnswer(number);
+  return () => generateAnswer(value);
 };
 
 const gameObject = {
