@@ -1,7 +1,7 @@
 import runGameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const returnYesIfEven = (value) => {
+const yesIfEven = (value) => {
   if (value % 2 === 0) {
     return 'yes';
   }
@@ -16,7 +16,7 @@ const generateRoundDescription = () => {
 
   return {
     question: `Question: ${value}`,
-    answer: returnYesIfEven(value),
+    answer: yesIfEven(value),
   };
 };
 

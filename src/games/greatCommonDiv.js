@@ -1,18 +1,15 @@
 import runGameProcess from '..';
 import { generatePair } from '../generateNumbers';
 
-const returnGreatCommonDivisor = (numbers) => {
-  const limit = numbers[0] > numbers[1] ? numbers[0] : numbers[1];
-  let divisor = 0;
-
-  for (let i = 1; i <= limit; i += 1) {
-    if (numbers[0] % i === 0 && numbers[1] % i === 0) {
-      divisor = i;
-    }
+const greatCommonDivisor = (numbers) => {
+  if (numbers[0] === numbers[1]) {
+    return String(numbers[0]);
   }
 
-  return String(divisor);
+  return numbers[0] > numbers[1] ? greatCommonDivisor([numbers[1], numbers[0] - numbers[1]]) :
+    greatCommonDivisor([numbers[0], numbers[1] - numbers[0]]);
 };
+
 
 const generateNumbers = () => generatePair(200);
 
@@ -21,7 +18,7 @@ const generateRoundDescription = () => {
 
   return {
     question: `Question: ${value[0]} and ${value[1]}`,
-    answer: returnGreatCommonDivisor(value),
+    answer: greatCommonDivisor(value),
   };
 };
 
