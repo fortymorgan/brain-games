@@ -1,5 +1,5 @@
-import runGameProcess from '..';
-import { generateSimple } from '../generateNumbers';
+const runGameProcess = require('..');
+const { generateSimple } = require('../generateNumbers');
 
 const returnYesIfPositive = (value) => {
   if (value > 0) {
@@ -26,4 +26,4 @@ const runGame = () => {
   runGameProcess(instruction, generateRoundDescription);
 };
 
-export default runGame;
+exports.default = runGame;

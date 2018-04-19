@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import runGame from '../games/greatCommonDiv';
+const runGame = require('../games/greatCommonDiv').default;
 
 runGame();

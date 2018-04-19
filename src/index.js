@@ -1,5 +1,5 @@
-import readlineSync from 'readline-sync';
-import { N_ROUNDS } from './config';
+const readlineSync = require('readline-sync');
+const { N_ROUNDS } = require('./config');
 
 const runGameProcess = (instruction, generateRoundDescription) => {
   const playerName = readlineSync.question('Welcome to the Brain Games!\nTell me your name, please: ');
@@ -33,4 +33,4 @@ const runGameProcess = (instruction, generateRoundDescription) => {
   }
 };
 
-export default runGameProcess;
+module.exports = runGameProcess;

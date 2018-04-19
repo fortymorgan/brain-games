@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import runGame from '../games/balance';
+const runGame = require('../games/balance').default;
 
 runGame();

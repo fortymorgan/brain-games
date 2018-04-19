@@ -1,5 +1,5 @@
-import runGameProcess from '..';
-import { generatePair } from '../generateNumbers';
+const runGameProcess = require('..');
+const { generatePair } = require('../generateNumbers');
 
 const returnGreatCommonDivisor = (numbers) => {
   const limit = numbers[0] > numbers[1] ? numbers[0] : numbers[1];
@@ -31,4 +31,4 @@ const runGame = () => {
   runGameProcess(instruction, generateRoundDescription);
 };
 
-export default runGame;
+exports.default = runGame;

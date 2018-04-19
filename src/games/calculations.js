@@ -1,5 +1,5 @@
-import runGameProcess from '..';
-import { generatePair } from '../generateNumbers';
+const runGameProcess = require('..');
+const { generatePair } = require('../generateNumbers');
 
 const generateAnswer = (value) => {
   switch (value.action) {
@@ -48,4 +48,4 @@ const runGame = () => {
   runGameProcess(instruction, generateRoundDescription);
 };
 
-export default runGame;
+exports.default = runGame;

@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import runGame from '../games/oddOrEven';
+const runGame = require('../games/oddOrEven').default;
 
 runGame();

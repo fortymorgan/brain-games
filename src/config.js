@@ -1,1 +1,1 @@
-export const N_ROUNDS = 3;
+exports.N_ROUNDS = 3;

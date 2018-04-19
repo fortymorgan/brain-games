@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import runGame from '../games/positiveOrNegative';
+const runGame = require('../games/positiveOrNegative').default;
 
 runGame();
