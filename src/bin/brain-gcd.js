@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import game from '../games/greatCommonDiv';
+import runGame from '../games/greatCommonDiv';
 
-game();
+runGame();

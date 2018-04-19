@@ -1,7 +1,7 @@
-import gameProcess from '..';
+import runGameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const sumOfDigits = (value) => {
+const sumDigits = (value) => {
   let total = 0;
   const numToString = String(value);
 
@@ -12,8 +12,8 @@ const sumOfDigits = (value) => {
   return total;
 };
 
-const balance = (value) => {
-  let sum = sumOfDigits(value);
+const balanceNumber = (value) => {
+  let sum = sumDigits(value);
   const numToString = String(value);
   let balanced = '';
 
@@ -27,22 +27,19 @@ const balance = (value) => {
 
 const generateNumber = () => generateSimple(10000);
 
-const formQuestion = () => {
+const generateRoundDescription = () => {
   const value = generateNumber();
-  console.log(`Question: ${value}`);
 
-  return () => balance(value);
+  return {
+    question: `Question: ${value}`,
+    answer: balanceNumber(value),
+  };
 };
 
-const gameObject = {
-  instruction: 'Balance the given number.',
-  // generateValue: generateNumber,
-  askQuestion: formQuestion,
-  // calculateAnswer: balance,
+const instruction = 'Balance the given number.';
+
+const runGame = () => {
+  runGameProcess(instruction, generateRoundDescription);
 };
 
-const game = () => {
-  gameProcess(gameObject);
-};
-
-export default game;
+export default runGame;

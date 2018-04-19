@@ -1,12 +1,12 @@
-import gameProcess from '..';
+import runGameProcess from '..';
 import { generatePair } from '../generateNumbers';
 
-const greatCommonDiv = (value) => {
-  const limit = value[0] > value[1] ? value[0] : value[1];
+const returnGreatCommonDivisor = (numbers) => {
+  const limit = numbers[0] > numbers[1] ? numbers[0] : numbers[1];
   let divisor = 0;
 
   for (let i = 1; i <= limit; i += 1) {
-    if (value[0] % i === 0 && value[1] % i === 0) {
+    if (numbers[0] % i === 0 && numbers[1] % i === 0) {
       divisor = i;
     }
   }
@@ -16,22 +16,19 @@ const greatCommonDiv = (value) => {
 
 const generateNumbers = () => generatePair(200);
 
-const formQuestion = () => {
+const generateRoundDescription = () => {
   const value = generateNumbers();
-  console.log(`Question: ${value[0]} and ${value[1]}`);
 
-  return () => greatCommonDiv(value);
+  return {
+    question: `Question: ${value[0]} and ${value[1]}`,
+    answer: returnGreatCommonDivisor(value),
+  };
 };
 
-const gameObject = {
-  instruction: 'Find the greatest common divisor of given numbers.',
-  // generateValue: generateNumbers,
-  askQuestion: formQuestion,
-  // calculateAnswer: greatCommonDiv,
+const instruction = 'Find the greatest common divisor of given numbers.';
+
+const runGame = () => {
+  runGameProcess(instruction, generateRoundDescription);
 };
 
-const game = () => {
-  gameProcess(gameObject);
-};
-
-export default game;
+export default runGame;

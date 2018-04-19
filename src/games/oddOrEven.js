@@ -1,7 +1,7 @@
-import gameProcess from '..';
+import runGameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const oddOrEven = (value) => {
+const returnYesIfEven = (value) => {
   if (value % 2 === 0) {
     return 'yes';
   }
@@ -11,22 +11,19 @@ const oddOrEven = (value) => {
 
 const generateNumber = () => generateSimple(50);
 
-const formQuestion = () => {
+const generateRoundDescription = () => {
   const value = generateNumber();
-  console.log(`Question: ${value}`);
 
-  return () => oddOrEven(value);
+  return {
+    question: `Question: ${value}`,
+    answer: returnYesIfEven(value),
+  };
 };
 
-const gameObject = {
-  instruction: 'Answer "yes" if number even otherwise answer "no".',
-  // generateValue: generateNumber,
-  askQuestion: formQuestion,
-  // calculateAnswer: oddOrEven,
+const instruction = 'Answer "yes" if number even otherwise answer "no".';
+
+const runGame = () => {
+  runGameProcess(instruction, generateRoundDescription);
 };
 
-const game = () => {
-  gameProcess(gameObject);
-};
-
-export default game;
+export default runGame;

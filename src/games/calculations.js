@@ -1,4 +1,4 @@
-import gameProcess from '..';
+import runGameProcess from '..';
 import { generatePair } from '../generateNumbers';
 
 const generateAnswer = (value) => {
@@ -14,23 +14,12 @@ const generateAnswer = (value) => {
   }
 };
 
-const actionNumberToType = (actionNumber) => {
-  switch (actionNumber) {
-    case 0:
-      return '*';
-    case 1:
-      return '+';
-    case 2:
-      return '-';
-    default:
-      return 'unknown';
-  }
-};
+const convertActionType = actionNumber => ['*', '+', '-'][actionNumber];
 
-const actionType = () => {
+const generateActionType = () => {
   const actionNumber = Math.floor(Math.random() * 3);
 
-  return actionNumberToType(actionNumber);
+  return convertActionType(actionNumber);
 };
 
 const formNumbersAndAction = (array, actionToDo) => {
@@ -44,24 +33,19 @@ const formNumbersAndAction = (array, actionToDo) => {
 
 const generateNumber = () => generatePair(25);
 
-const numbersAndAction = () => formNumbersAndAction(generateNumber(), actionType());
+const generateRoundDescription = () => {
+  const value = formNumbersAndAction(generateNumber(), generateActionType());
 
-const formAction = () => {
-  const value = numbersAndAction();
-  console.log(`Question: ${value.numbers[0]} ${value.action} ${value.numbers[1]}`);
-
-  return () => generateAnswer(value);
+  return {
+    question: `Question: ${value.numbers[0]} ${value.action} ${value.numbers[1]}`,
+    answer: generateAnswer(value),
+  };
 };
 
-const gameObject = {
-  instruction: 'What is the result of the expression?',
-  // generateValue: numbersAndAction,
-  askQuestion: formAction,
-  // calculateAnswer: generateAnswer,
+const instruction = 'What is the result of the expression?';
+
+const runGame = () => {
+  runGameProcess(instruction, generateRoundDescription);
 };
 
-const game = () => {
-  gameProcess(gameObject);
-};
-
-export default game;
+export default runGame;
