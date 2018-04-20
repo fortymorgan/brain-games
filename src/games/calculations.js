@@ -4,11 +4,11 @@ import { generatePair } from '../generateNumbers';
 const generateAnswer = (value) => {
   switch (value.action) {
     case '+':
-      return String(value.numbers[0] + value.numbers[1]);
+      return value.numbers[0] + value.numbers[1];
     case '-':
-      return String(value.numbers[0] - value.numbers[1]);
+      return value.numbers[0] - value.numbers[1];
     case '*':
-      return String(value.numbers[0] * value.numbers[1]);
+      return value.numbers[0] * value.numbers[1];
     default:
       throw new Error('Unknown operation');
   }
@@ -37,8 +37,8 @@ const generateRoundDescription = () => {
   const value = formNumbersAndAction(generateNumber(), generateActionType());
 
   return {
-    question: `Question: ${value.numbers[0]} ${value.action} ${value.numbers[1]}`,
-    answer: generateAnswer(value),
+    question: `Result of ${value.numbers[0]} ${value.action} ${value.numbers[1]}`,
+    answer: String(generateAnswer(value)),
   };
 };
 
