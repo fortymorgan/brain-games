@@ -3,7 +3,7 @@ import { generateProgression, generateSimple } from '../generateNumbers';
 
 const progressionPartToString = (progression, begin, end) => progression.slice(begin, end).join(' ');
 
-const generateProgressionQuestion = (progression) => {
+const generateProgressionDescription = (progression) => {
   const missedElementIndex = generateSimple(progression.length);
   const questionStringObject = {
     firstPart: progressionPartToString(progression, 0, missedElementIndex),
@@ -17,7 +17,7 @@ const generateProgressionQuestion = (progression) => {
 
 const generateRoundDescription = () => {
   const value = generateProgression(10);
-  return generateProgressionQuestion(value);
+  return generateProgressionDescription(value);
 };
 
 const instruction = 'What number is missing in this progression?';
