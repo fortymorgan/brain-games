@@ -1,23 +1,28 @@
 import runGameProcess from '..';
 import { generateSimple } from '../generateNumbers';
 
-const yesIfPrime = (number) => {
+const isPrime = (number) => {
   for (let i = 2; i < Math.sqrt(number); i += 1) {
     if (number % i === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
-const generateNumber = () => generateSimple(150);
+const yesIfTrue = (predicate) => {
+  if (predicate) {
+    return 'yes';
+  }
+  return 'no';
+};
 
 const generateRoundDescription = () => {
-  const value = generateNumber();
+  const value = generateSimple(150);
 
   return {
-    question: `Question: ${value}`,
-    answer: yesIfPrime(value),
+    question: `Is this number prime? ${value}`,
+    answer: yesIfTrue(isPrime(value)),
   };
 };
 
