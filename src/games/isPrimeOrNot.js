@@ -10,19 +10,12 @@ const isPrime = (number) => {
   return true;
 };
 
-const yesIfPrime = (number) => {
-  if (isPrime(number)) {
-    return 'yes';
-  }
-  return 'no';
-};
-
 const generateRoundDescription = () => {
   const value = generateSimple(150);
 
   return {
     question: `Is this number prime? ${value}`,
-    answer: yesIfPrime(value),
+    answer: isPrime(value) ? 'yes' : 'no',
   };
 };
 
