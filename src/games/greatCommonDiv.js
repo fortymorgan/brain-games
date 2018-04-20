@@ -1,24 +1,21 @@
 import runGameProcess from '..';
 import { generatePair } from '../generateNumbers';
 
-const greatCommonDivisor = (numbers) => {
-  if (numbers[0] === numbers[1]) {
-    return String(numbers[0]);
+const greatestCommonDivisor = (a, b) => {
+  if (a === b) {
+    return a;
   }
 
-  return numbers[0] > numbers[1] ? greatCommonDivisor([numbers[1], numbers[0] - numbers[1]]) :
-    greatCommonDivisor([numbers[0], numbers[1] - numbers[0]]);
+  return a > b ? greatestCommonDivisor([b, a - b]) :
+    greatestCommonDivisor([a, b - a]);
 };
 
-
-const generateNumbers = () => generatePair(200);
-
 const generateRoundDescription = () => {
-  const value = generateNumbers();
+  const [a, b] = generatePair(200);
 
   return {
-    question: `Question: ${value[0]} and ${value[1]}`,
-    answer: greatCommonDivisor(value),
+    question: `Between ${a} and ${b}`,
+    answer: String(greatestCommonDivisor(a, b)),
   };
 };
 
