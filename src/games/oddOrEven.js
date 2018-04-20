@@ -9,13 +9,11 @@ const yesIfEven = (value) => {
   return 'no';
 };
 
-const generateNumber = () => generateSimple(50);
-
 const generateRoundDescription = () => {
-  const value = generateNumber();
+  const value = generateSimple(50);
 
   return {
-    question: `Question: ${value}`,
+    question: `Is this number even? ${value}`,
     answer: yesIfEven(value),
   };
 };

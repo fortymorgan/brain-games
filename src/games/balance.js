@@ -25,13 +25,11 @@ const balanceNumber = (value) => {
   return balanced;
 };
 
-const generateNumber = () => generateSimple(10000);
-
 const generateRoundDescription = () => {
-  const value = generateNumber();
+  const value = generateSimple(10000);
 
   return {
-    question: `Question: ${value}`,
+    question: `Balance number ${value}`,
     answer: balanceNumber(value),
   };
 };
