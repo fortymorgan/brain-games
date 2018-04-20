@@ -1,26 +1,43 @@
 import runGameProcess from '..';
 import { generateProgression, generateSimple } from '../generateNumbers';
 
-const progressionPartToString = (progression, begin, end) => progression.slice(begin, end).join(' ');
+const generateUniqueArray = (amount, indexRange) => {
+  const arrayOfIndex = [];
 
-const generateProgressionDescription = (progression) => {
-  const missedElementIndex = generateSimple(progression.length);
-  const questionStringObject = {
-    firstPart: progressionPartToString(progression, 0, missedElementIndex),
-    secondPart: progressionPartToString(progression, missedElementIndex + 1),
-  };
-  return {
-    question: `${questionStringObject.firstPart} .. ${questionStringObject.secondPart}`,
-    answer: String(progression[missedElementIndex]),
-  };
+  for (let i = 0; i < amount; i += 1) {
+    let randomIndex = generateSimple(indexRange);
+    if (arrayOfIndex.indexOf(randomIndex) === -1) {
+      arrayOfIndex.push(randomIndex);
+      randomIndex = 0;
+    } else {
+      i -= 1;
+    }
+  }
+  return arrayOfIndex;
 };
 
 const generateRoundDescription = () => {
-  const value = generateProgression(10);
-  return generateProgressionDescription(value);
+  const progression = generateProgression(10);
+  const indexToHide = generateUniqueArray(1, progression.length - 1);
+  const arrayOfAnswers = [];
+
+  const hideElementOnIndex = (elem, index) => {
+    if (indexToHide.indexOf(index) !== -1) {
+      arrayOfAnswers.push(elem);
+      return '..';
+    }
+    return elem;
+  };
+
+  const withHiddenNumbers = progression.map(hideElementOnIndex);
+
+  return {
+    question: withHiddenNumbers.join(' '),
+    answer: arrayOfAnswers.join(' '),
+  };
 };
 
-const instruction = 'What number is missing in this progression?';
+const instruction = 'What numbers is missing in this progression?';
 
 const runGame = () => {
   runGameProcess(instruction, generateRoundDescription);
