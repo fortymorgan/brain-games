@@ -1,18 +1,23 @@
 import runGameProcess from '..';
-import { generateProgression } from '../generateNumbers';
+import { generateProgression, generateSimple } from '../generateNumbers';
 
-const generateProgressionQuestion = progression => `${progression[0]} \
-${progression[1]} ${progression[2]} ${progression[3]} ${progression[4]} \
-.. ${progression[6]} ${progression[7]} ${progression[8]} ${progression[9]}`;
+const progressionPartToString = (progression, begin, end) => progression.slice(begin, end).join(' ');
 
+const generateProgressionQuestion = (progression) => {
+  const missedElementIndex = generateSimple(progression.length);
+  const questionStringObject = {
+    firstPart: progressionPartToString(progression, 0, missedElementIndex),
+    secondPart: progressionPartToString(progression, missedElementIndex + 1),
+  };
+  return {
+    question: `${questionStringObject.firstPart} .. ${questionStringObject.secondPart}`,
+    answer: String(progression[missedElementIndex]),
+  };
+};
 
 const generateRoundDescription = () => {
-  const value = generateProgression();
-
-  return {
-    question: generateProgressionQuestion(value),
-    answer: String(value[5]),
-  };
+  const value = generateProgression(10);
+  return generateProgressionQuestion(value);
 };
 
 const instruction = 'What number is missing in this progression?';
