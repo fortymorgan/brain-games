@@ -37,7 +37,7 @@ const generateRoundDescription = () => {
   };
 };
 
-const instruction = 'What numbers is missing in this progression?';
+const instruction = 'What numbers are missing in this progression?';
 
 const runGame = () => {
   runGameProcess(instruction, generateRoundDescription);
