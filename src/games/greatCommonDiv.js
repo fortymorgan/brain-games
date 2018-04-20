@@ -6,8 +6,8 @@ const greatestCommonDivisor = (a, b) => {
     return a;
   }
 
-  return a > b ? greatestCommonDivisor([b, a - b]) :
-    greatestCommonDivisor([a, b - a]);
+  return (a > b) ? greatestCommonDivisor(b, a - b) :
+    greatestCommonDivisor(a, b - a);
 };
 
 const generateRoundDescription = () => {
