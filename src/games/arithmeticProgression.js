@@ -18,20 +18,24 @@ const generateUniqueArray = (amount, indexRange) => {
 
 const generateRoundDescription = () => {
   const progression = generateProgression(10);
-  const indexToHide = generateUniqueArray(1, progression.length - 1);
-  const arrayOfAnswers = [];
-  const withHiddenNumbers = [];
+  const indexToHide = generateUniqueArray(3, progression.length - 1);
 
   const hideElementOnIndex = (elem, index) => {
     if (indexToHide.indexOf(index) !== -1) {
-      arrayOfAnswers.push(elem);
-      withHiddenNumbers.push('..');
-    } else {
-      withHiddenNumbers.push(elem);
+      return '..';
     }
+    return elem;
   };
 
-  progression.forEach(hideElementOnIndex);
+  const filterAnswers = (elem, index) => {
+    if (indexToHide.indexOf(index) !== -1) {
+      return true;
+    }
+    return false;
+  };
+
+  const withHiddenNumbers = progression.map(hideElementOnIndex);
+  const arrayOfAnswers = progression.filter(filterAnswers);
 
   return {
     question: withHiddenNumbers.join(' '),
