@@ -4,14 +4,13 @@ import { generateProgression, generateSimple } from '../generateNumbers';
 const generateUniqueArray = (amount, indexRange) => {
   const arrayOfIndex = [];
 
-  for (let i = 0; i < amount; i += 1) {
+  while (arrayOfIndex.length !== amount) {
     const randomIndex = generateSimple(indexRange);
     if (arrayOfIndex.indexOf(randomIndex) === -1) {
       arrayOfIndex.push(randomIndex);
-    } else {
-      i -= 1;
     }
   }
+
   return arrayOfIndex;
 };
 
