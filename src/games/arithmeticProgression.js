@@ -5,10 +5,9 @@ const generateUniqueArray = (amount, indexRange) => {
   const arrayOfIndex = [];
 
   for (let i = 0; i < amount; i += 1) {
-    let randomIndex = generateSimple(indexRange);
+    const randomIndex = generateSimple(indexRange);
     if (arrayOfIndex.indexOf(randomIndex) === -1) {
       arrayOfIndex.push(randomIndex);
-      randomIndex = 0;
     } else {
       i -= 1;
     }
@@ -20,19 +19,9 @@ const generateRoundDescription = () => {
   const progression = generateProgression(10);
   const indexToHide = generateUniqueArray(3, progression.length - 1);
 
-  const hideElementOnIndex = (elem, index) => {
-    if (indexToHide.indexOf(index) !== -1) {
-      return '..';
-    }
-    return elem;
-  };
+  const hideElementOnIndex = (elem, index) => (indexToHide.includes(index) ? '..' : elem);
 
-  const filterAnswers = (elem, index) => {
-    if (indexToHide.indexOf(index) !== -1) {
-      return true;
-    }
-    return false;
-  };
+  const filterAnswers = (elem, index) => indexToHide.includes(index);
 
   const withHiddenNumbers = progression.map(hideElementOnIndex);
   const arrayOfAnswers = progression.filter(filterAnswers);
