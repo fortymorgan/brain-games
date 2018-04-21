@@ -20,16 +20,18 @@ const generateRoundDescription = () => {
   const progression = generateProgression(10);
   const indexToHide = generateUniqueArray(1, progression.length - 1);
   const arrayOfAnswers = [];
+  const withHiddenNumbers = [];
 
   const hideElementOnIndex = (elem, index) => {
     if (indexToHide.indexOf(index) !== -1) {
       arrayOfAnswers.push(elem);
-      return '..';
+      withHiddenNumbers.push('..');
+    } else {
+      withHiddenNumbers.push(elem);
     }
-    return elem;
   };
 
-  const withHiddenNumbers = progression.map(hideElementOnIndex);
+  progression.forEach(hideElementOnIndex);
 
   return {
     question: withHiddenNumbers.join(' '),
