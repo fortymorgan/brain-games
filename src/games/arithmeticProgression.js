@@ -6,7 +6,7 @@ const generateUniqueArray = (amount, indexRange) => {
 
   while (arrayOfIndex.length !== amount) {
     const randomIndex = generateSimple(indexRange);
-    if (arrayOfIndex.indexOf(randomIndex) === -1) {
+    if (!arrayOfIndex.includes(randomIndex)) {
       arrayOfIndex.push(randomIndex);
     }
   }
