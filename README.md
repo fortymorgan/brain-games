@@ -64,15 +64,15 @@ Correct!
 
 ### Game "Arithmetical progression"
 ```
-What number is missing in this progression?
-1 9 17 25 33 .. 49 57 65 73
-Your answer: 41
+What numbers are missing in this progression?
+22 32 42 .. .. 72 82 .. 102 112
+Your answer: 52 62 92
 Correct!
-19 29 39 49 59 .. 79 89 99 109
-Your answer: 69
+25 .. 37 43 49 55 .. 67 .. 79
+Your answer: 31 61 73
 Correct!
-25 30 35 40 45 .. 55 60 65 70
-Your answer: 50
+12 15 .. .. 24 27 30 .. 36 39
+Your answer: 18 21 33
 Correct!
 ```
 
