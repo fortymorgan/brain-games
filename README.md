@@ -90,41 +90,46 @@ Your answer: no
 Correct!
 ```
 
-## How to install
+## How to develop
 
-To install run in console:
+Fist you need to build app with:
 ```
-npm install -g brain-games-s256
+npm run build
 ```
 
-## How to use
+Then you can run games with:
 
 ### Game "Is number even"
 ```
-brain-even
+dist/bin/brain-even.js
 ```
 
 ### Game "Calculations"
 ```
-brain-calc
+dist/bin/brain-calc.js
 ```
 
 ### Game "Greatest common divisor"
 ```
-brain-gcd
+dist/bin/brain-gcd.js
 ```
 
 ### Game "Balance number"
 ```
-brain-balance
+dist/bin/brain-balance.js
 ```
 
 ### Game "Arithmetical progression"
 ```
-brain-progression
+dist/bin/brain-progression.js
 ```
 
 ### Game "Is number prime"
 ```
-brain-prime
+dist/bin/brain-prime.js
 ```
+
+## Config
+
+There are 3 rounds of every game by default. You can change it in `src/config.js`.  
+(Remember to rebuild app with `npm run build`)
